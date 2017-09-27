@@ -9,14 +9,19 @@ $(function ($) {
         if (!$item.hasClass('open')) {
             $item.parent().find('.open .submenu').slideUp('fast');
             $item.parent().find('.open').toggleClass('open');
+            console.log("==============="+$item.href);
         }
         $item.toggleClass('open');
         if ($item.hasClass('open')) {
             $item.children('.submenu').slideDown('fast');
-        }
-        else {
+        } else {
             $item.children('.submenu').slideUp('fast');
         }
+    });
+
+    $(".submenu > li>a").on('click', function (e) {
+        var url = $(this).attr("data");
+        $(window.parent.document).find("#content_frame").attr("src",url);
     });
 
     $('body').on('mouseenter', '#page-wrapper.nav-small #sidebar-nav .dropdown-toggle', function (e) {
